@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Error - YS 的Blog</title>
+  <title>Pods Written in Swift Can Only Be Integrated as Frameworks - YS 的Blog</title>
   <meta name="author" content="Yancey">
 
   
-  <meta name="description" content="Category: error">
+  <meta name="description" content="[!] Pods written in Swift can only be integrated as frameworks; this feature is still in beta. Add use_frameworks! to your Podfile or target to opt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yanceychan.github.io/blog/categories/error/">
+  <link rel="canonical" href="http://yanceychan.github.io/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="YS 的Blog" type="application/atom+xml">
@@ -64,77 +64,78 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Error</h1>
+    
+      <h1 class="entry-title">Pods Written in Swift Can Only Be Integrated as Frameworks</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-24T16:53:46+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:53 pm</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>[!] Pods written in Swift can only be integrated as frameworks; this feature is still in beta. Add <code>use_frameworks!</code> to your Podfile or target to opt into using it. The Swift Pods being used are: Box, ReactiveCocoa, and Result</p>
 
-  
-  <h2>2015</h2>
+<p>用PODS 添加RAC的时候出现这样的问题提示</p>
 
-<article>
-  
-<h1><a href="/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/">Pods Written in Swift Can Only Be Integrated as Frameworks</a></h1>
-<time datetime="2015-09-24T16:53:46+08:00" pubdate><span class='month'>Sep</span> <span class='day'>24</span> <span class='year'>2015</span></time>
+<p><img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150923140859601.png?raw=true" alt="这里写图片描述" /></p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/error/'>error</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/09/24/use-of-undectared-identifier-xxxx/">Use of Undectared Identifier '_xxxx'</a></h1>
-<time datetime="2015-09-24T16:51:18+08:00" pubdate><span class='month'>Sep</span> <span class='day'>24</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/error/'>error</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/09/24/undefined-symbols-for-architecture-i386/">Undefined Symbols for Architecture I386</a></h1>
-<time datetime="2015-09-24T16:09:09+08:00" pubdate><span class='month'>Sep</span> <span class='day'>24</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/error/'>error</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/09/24/expression-is-not-assignable/">Expression Is Not Assignable</a></h1>
-<time datetime="2015-09-24T15:51:38+08:00" pubdate><span class='month'>Sep</span> <span class='day'>24</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/error/'>error</a></span>
-</footer>
-
-
-</article>
-
+<p>可能是RAC 不支持swift导致
+解决办法：在podfile里面添加 use_frameworks
+<img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150923142933623.png?raw=true" alt="这里写图片描述" /></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Yancey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-09-24T16:53:46+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:53 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/error/'>error</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yanceychan.github.io/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/" data-via="" data-counturl="http://yanceychan.github.io/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/09/24/use-of-undectared-identifier-xxxx/" title="Previous Post: Use of undectared identifier '_xxxx'">&laquo; Use of undectared identifier '_xxxx'</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

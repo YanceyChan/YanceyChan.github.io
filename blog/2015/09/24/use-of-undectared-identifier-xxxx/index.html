@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Use of Undectared Identifier '_xxxx' - YS 的Blog</title>
+  <meta name="author" content="Yancey">
+
+  
+  <meta name="description" content="今天自定义一个继承UITextField的textField的时候，设置变量_borderColor的setter和getter方法的时候，出现了这样的报错 1
+2
+3
+4
+5
+6
+7
+#import &lt;UIKit/UIKit.h&gt;
+IB_DESIGNABLE
+@interface &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yanceychan.github.io/blog/2015/09/24/use-of-undectared-identifier-xxxx/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="YS 的Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">YS 的Blog</a></h1>
+  
+    <h2>我是一只小蜜蜂</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="yanceychan.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Use of Undectared Identifier '_xxxx'</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-24T16:51:18+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:51 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>今天自定义一个继承UITextField的textField的时候，设置变量_borderColor的setter和getter方法的时候，出现了这样的报错</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import &lt;UIKit/UIKit.h&gt;
+</span><span class='line'>IB_DESIGNABLE
+</span><span class='line'>@interface CYSTextField : UITextField
+</span><span class='line'>@property (strong, nonatomic) IBInspectable UIColor *borderColor;
+</span><span class='line'>@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
+</span><span class='line'>@property (assign, nonatomic) IBInspectable CGFloat cornerRaduis;
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>单独设置setter方法的时候没有问题，但是加上getter方法的时候，xcode就会提示undectared identifier &lsquo;_xxxx'这样的错误了。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- (UIColor *)borderColor{
+</span><span class='line'>    
+</span><span class='line'>    if (!_borderColor) {
+</span><span class='line'>        return [UIColor blueColor];
+</span><span class='line'>    }
+</span><span class='line'>    return _borderColor;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>- (void)setBorderColor:(UIColor *)borderColor{
+</span><span class='line'>    _borderColor = borderColor;
+</span><span class='line'>    self.layer.borderColor = _borderColor.CGColor;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在上面加上
+<code>@synthesize borderColor = _borderColor;</code>
+后，问题就解决了。</p>
+
+<p>度娘了一下，问题出现的原因应该是<em>borderColor 是变量，borderColor是属性。borderColor属性生成存取方法是setBorderColor和borderColor，这2个方法操作的变量是</em>borderColor</p>
+
+<p>getter器的方法名直接就是变量名，方法名和变量名一样，容易让人迷糊，所以，可以这样优化
+这样我们就去使用_xxxxx，像使用xxxxx一样。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Yancey</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-09-24T16:51:18+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:51 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/error/'>error</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yanceychan.github.io/blog/2015/09/24/use-of-undectared-identifier-xxxx/" data-via="" data-counturl="http://yanceychan.github.io/blog/2015/09/24/use-of-undectared-identifier-xxxx/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/09/24/undefined-symbols-for-architecture-i386/" title="Previous Post: Undefined symbols for architecture i386">&laquo; Undefined symbols for architecture i386</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/" title="Next Post: Pods written in Swift can only be integrated as frameworks">Pods written in Swift can only be integrated as frameworks &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/">Pods Written in Swift Can Only Be Integrated as Frameworks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/24/use-of-undectared-identifier-xxxx/">Use of Undectared Identifier '_xxxx'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/24/undefined-symbols-for-architecture-i386/">Undefined Symbols for Architecture I386</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/24/expression-is-not-assignable/">Expression Is Not Assignable</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Yancey -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
