@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Error | YS 的Blog]]></title>
   <link href="http://yanceychan.github.io/blog/categories/error/atom.xml" rel="self"/>
   <link href="http://yanceychan.github.io/"/>
-  <updated>2015-09-24T15:55:09+08:00</updated>
+  <updated>2015-09-24T16:23:28+08:00</updated>
   <id>http://yanceychan.github.io/</id>
   <author>
     <name><![CDATA[Yancey]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Undefined Symbols for Architecture I386]]></title>
+    <link href="http://yanceychan.github.io/blog/2015/09/24/undefined-symbols-for-architecture-i386/"/>
+    <updated>2015-09-24T16:09:09+08:00</updated>
+    <id>http://yanceychan.github.io/blog/2015/09/24/undefined-symbols-for-architecture-i386</id>
+    <content type="html"><![CDATA[<p><img src="https://github.com/YanceyChan/YanceyChan.github.io/source/images/20150702134813838.png" alt="image" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Expression Is Not Assignable]]></title>
