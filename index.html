@@ -9,9 +9,9 @@
   <meta name="author" content="Yancey">
 
   
-  <meta name="description" content="问题是： 1
-self.view.frame.size.height = 100f; 这样写没法通过编译，编译器会报错 1
-"expression is not assignable" 原因是，这句话里面的几个点有两种不同的含义。self.view.frame是Objective-C语法， &hellip;">
+  <meta name="description" content="项目新添加了一个第三方framework，结果编译提示错误了。
+检查了一下Link Binary With Libraries 发现是有添加这个库的，而且还有2个。。。 删除一个，再编译，失败，
+删除两个，再重新添加，编译，继续失败 是不是因为这个库只能在真机情况下才能编译成功？？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,47 @@ self.view.frame.size.height = 100f; 这样写没法通过编译，编译器会�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/09/24/undefined-symbols-for-architecture-i386/">Undefined Symbols for Architecture I386</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-24T16:09:09+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:09 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150702134813838.png?raw=true" alt="" /></p>
+
+<p>项目新添加了一个第三方framework，结果编译提示错误了。
+检查了一下Link Binary With Libraries  发现是有添加这个库的，而且还有2个。。。</p>
+
+<p><img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150702135032311.png?raw=true" alt="" /></p>
+
+<p>删除一个，再编译，失败，
+删除两个，再重新添加，编译，继续失败</p>
+
+<p>是不是因为这个库只能在真机情况下才能编译成功？？明天拿真机来试试看。</p>
+
+<p>最后的最后。。。真的是因为XXX.framework  只能用真机编译啊。。。╮(╯▽╰)╭蛋疼。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -164,6 +205,10 @@ self.view.frame.size.height = 100f; 这样写没法通过编译，编译器会�
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/24/undefined-symbols-for-architecture-i386/">Undefined Symbols for Architecture I386</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/09/24/expression-is-not-assignable/">Expression Is Not Assignable</a>
