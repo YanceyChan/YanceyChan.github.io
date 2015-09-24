@@ -4,7 +4,7 @@
   <title><![CDATA[YS 的Blog]]></title>
   <link href="http://yanceychan.github.io/atom.xml" rel="self"/>
   <link href="http://yanceychan.github.io/"/>
-  <updated>2015-09-24T16:40:03+08:00</updated>
+  <updated>2015-09-24T17:03:17+08:00</updated>
   <id>http://yanceychan.github.io/</id>
   <author>
     <name><![CDATA[Yancey]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pods Written in Swift Can Only Be Integrated as Frameworks]]></title>
+    <link href="http://yanceychan.github.io/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks/"/>
+    <updated>2015-09-24T16:53:46+08:00</updated>
+    <id>http://yanceychan.github.io/blog/2015/09/24/pods-written-in-swift-can-only-be-integrated-as-frameworks</id>
+    <content type="html"><![CDATA[<p>[!] Pods written in Swift can only be integrated as frameworks; this feature is still in beta. Add <code>use_frameworks!</code> to your Podfile or target to opt into using it. The Swift Pods being used are: Box, ReactiveCocoa, and Result</p>
+
+<p>用PODS 添加RAC的时候出现这样的问题提示</p>
+
+<p><img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150923140859601.png?raw=true" alt="这里写图片描述" /></p>
+
+<p>可能是RAC 不支持swift导致
+解决办法：在podfile里面添加 use_frameworks
+<img src="https://github.com/YanceyChan/YanceyChan.github.io/blob/source/source/images/20150923142933623.png?raw=true" alt="这里写图片描述" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use of Undectared Identifier '_xxxx']]></title>
+    <link href="http://yanceychan.github.io/blog/2015/09/24/use-of-undectared-identifier-xxxx/"/>
+    <updated>2015-09-24T16:51:18+08:00</updated>
+    <id>http://yanceychan.github.io/blog/2015/09/24/use-of-undectared-identifier-xxxx</id>
+    <content type="html"><![CDATA[<p>今天自定义一个继承UITextField的textField的时候，设置变量_borderColor的setter和getter方法的时候，出现了这样的报错</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import &lt;UIKit/UIKit.h&gt;
+</span><span class='line'>IB_DESIGNABLE
+</span><span class='line'>@interface CYSTextField : UITextField
+</span><span class='line'>@property (strong, nonatomic) IBInspectable UIColor *borderColor;
+</span><span class='line'>@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
+</span><span class='line'>@property (assign, nonatomic) IBInspectable CGFloat cornerRaduis;
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>单独设置setter方法的时候没有问题，但是加上getter方法的时候，xcode就会提示undectared identifier &lsquo;_xxxx'这样的错误了。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- (UIColor *)borderColor{
+</span><span class='line'>    
+</span><span class='line'>    if (!_borderColor) {
+</span><span class='line'>        return [UIColor blueColor];
+</span><span class='line'>    }
+</span><span class='line'>    return _borderColor;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>- (void)setBorderColor:(UIColor *)borderColor{
+</span><span class='line'>    _borderColor = borderColor;
+</span><span class='line'>    self.layer.borderColor = _borderColor.CGColor;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在上面加上
+<code>@synthesize borderColor = _borderColor;</code>
+后，问题就解决了。</p>
+
+<p>度娘了一下，问题出现的原因应该是<em>borderColor 是变量，borderColor是属性。borderColor属性生成存取方法是setBorderColor和borderColor，这2个方法操作的变量是</em>borderColor</p>
+
+<p>getter器的方法名直接就是变量名，方法名和变量名一样，容易让人迷糊，所以，可以这样优化
+这样我们就去使用_xxxxx，像使用xxxxx一样。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Undefined Symbols for Architecture I386]]></title>
